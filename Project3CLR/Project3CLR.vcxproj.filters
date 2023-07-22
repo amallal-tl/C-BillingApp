@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\DB">
+      <UniqueIdentifier>{9eec3ca3-2bb0-4ce5-ac6c-ebeedaacbae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DB">
+      <UniqueIdentifier>{11793423-f9f6-43a1-84af-ec5647f06a7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LoginForm.cpp">
@@ -21,6 +27,12 @@
     <ClCompile Include="HomeForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DBInteractions.cpp">
+      <Filter>Source Files\DB</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginDB.cpp">
+      <Filter>Source Files\DB</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginForm.h">
@@ -28,6 +40,9 @@
     </ClInclude>
     <ClInclude Include="HomeForm.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DBInteractions.h">
+      <Filter>Header Files\DB</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
