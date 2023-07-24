@@ -128,9 +128,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DBInteractions.h" />
+    <ClInclude Include="ProjectClr3Services.h" />
     <ClInclude Include="HomeForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="LoginDB.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

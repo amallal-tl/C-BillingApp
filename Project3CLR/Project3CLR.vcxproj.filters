@@ -44,5 +44,11 @@
     <ClInclude Include="DBInteractions.h">
       <Filter>Header Files\DB</Filter>
     </ClInclude>
+    <ClInclude Include="LoginDB.h">
+      <Filter>Header Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectClr3Services.h">
+      <Filter>Header Files\DB</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
