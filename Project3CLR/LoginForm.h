@@ -1,5 +1,7 @@
 #pragma once
 #include "HomeForm.h"
+#include "LoginDB.h"
+
 namespace Project3CLR {
 
 	using namespace System;
@@ -45,10 +47,6 @@ namespace Project3CLR {
 	private: System::Windows::Forms::Button^ button1;
 
 	private:
-
-		String^ userName = "user";
-		String^ password = "1234";
-
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -186,7 +184,8 @@ namespace Project3CLR {
 	}
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (textBox1->Text == userName && textBox2->Text == password) {
+		LoginDB logindb;
+		if (logindb.login(textBox1->Text, textBox2->Text)) {
 			HomeForm homeForm;
 			this->Hide();
 			homeForm.ShowDialog();

@@ -1,13 +1,30 @@
 // LoginDB.cpp
 #include "LoginDB.h"
-#include <iostream>
 
-bool LoginDB::login(std::string username, std::string password) {
-	std::cout << username << " : " << password << std::endl;
-	sqlite3* db = DBInteraction::getDbInstance();
+using namespace System::Data::SqlClient;
 
-	const char* sql = "SELECT * FROM users";
-	int rc = sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
-	// TODO: add more logic to check the username and password
-	return true;
+bool LoginDB::login(System::String^ username, System::String^ password) {
+	System::String^ connectionString = "Data Source=AMALLALTL;" +
+		"Initial Catalog=projectclr3;" +
+		"Integrated Security=SSPI;";
+
+	//try {
+		SqlConnection sqlConn(connectionString);
+		sqlConn.Open();
+		
+		System::String^ sqlQuery = "SELECT[userid] FROM[dbo].[User] WHERE username = @user AND password = @pass";
+		SqlCommand command(sqlQuery, % sqlConn);
+		command.Parameters->AddWithValue("@user", username);
+		command.Parameters->AddWithValue("@pass", password);
+
+		SqlDataReader^ reader = command.ExecuteReader();
+		if (reader->Read()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	/*}catch (Exception^ e) {
+
+	}*/
 }
