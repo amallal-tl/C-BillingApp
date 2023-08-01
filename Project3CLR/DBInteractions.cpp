@@ -1,9 +1,14 @@
 // DBInteractions.cpp
 
 #include "DBInteractions.h" // include this
-// initialize the static member variable
 
-// define the static member function to get the db instance
-//SqlConnection* getConnection() {
-//	return new SqlConnection();
-//}
+void DBInteraction::getConnection(){
+	System::String^ connectionString = "Data Source=AMALLALTL;" +
+		"Initial Catalog=projectclr3;" +
+		"Integrated Security=SSPI;";
+
+	SqlConnection sqlConn(connectionString);
+	sqlConn.Open();
+	//return sqlConn;
+}
+

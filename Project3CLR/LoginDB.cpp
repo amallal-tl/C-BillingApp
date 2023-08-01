@@ -8,7 +8,7 @@ bool LoginDB::login(System::String^ username, System::String^ password) {
 		"Initial Catalog=projectclr3;" +
 		"Integrated Security=SSPI;";
 
-	//try {
+	try {
 		SqlConnection sqlConn(connectionString);
 		sqlConn.Open();
 		
@@ -24,7 +24,7 @@ bool LoginDB::login(System::String^ username, System::String^ password) {
 		else {
 			return false;
 		}
-	/*}catch (Exception^ e) {
+	}catch (System::Exception^ e) {
 
-	}*/
+	}
 }

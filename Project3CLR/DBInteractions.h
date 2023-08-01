@@ -6,13 +6,9 @@
 using namespace System::Data::SqlClient;
 
 // declare a class named as DBInteraction
-class DBInteraction {
-private:
-	//System::String^ connectionString = "";
-
+ref class DBInteraction {
 public:
-	//SqlConnection* getConnection();
-   
+	void DBInteraction::getConnection();
 };
 
 #endif // DBINTERACTIONS_H

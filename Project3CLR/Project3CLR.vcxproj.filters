@@ -33,6 +33,9 @@
     <ClCompile Include="LoginDB.cpp">
       <Filter>Source Files\DB</Filter>
     </ClCompile>
+    <ClCompile Include="SaleReport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginForm.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="ProjectClr3Services.h">
       <Filter>Header Files\DB</Filter>
+    </ClInclude>
+    <ClInclude Include="SaleReport.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
