@@ -1,5 +1,5 @@
 #pragma once
-#include "HomeForm.h"
+#include "SaleReport.h"
 #include "LoginDB.h"
 
 namespace Project3CLR {
@@ -186,9 +186,9 @@ namespace Project3CLR {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		LoginDB logindb;
 		if (logindb.login(textBox1->Text, textBox2->Text)) {
-			HomeForm homeForm;
+			SaleReport saleReport;
 			this->Hide();
-			homeForm.ShowDialog();
+			saleReport.ShowDialog();
 		} else MessageBox::Show("Invalid username or password!");
 	}
 };
