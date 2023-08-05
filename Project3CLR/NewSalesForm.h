@@ -1,4 +1,5 @@
 #pragma once
+#include "Utils.h"
 
 namespace Project3CLR {
 
@@ -8,6 +9,7 @@ namespace Project3CLR {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for NewSalesForm
@@ -34,14 +36,19 @@ namespace Project3CLR {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ itemNameBox;
+	protected:
+
 	protected:
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::TextBox^ quantityBox;
+	private: System::Windows::Forms::TextBox^ amountBox;
+	private: System::Windows::Forms::Button^ submitButton;
+
+
+
 
 	private:
 		/// <summary>
@@ -56,21 +63,21 @@ namespace Project3CLR {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->itemNameBox = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->quantityBox = (gcnew System::Windows::Forms::TextBox());
+			this->amountBox = (gcnew System::Windows::Forms::TextBox());
+			this->submitButton = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// textBox1
+			// itemNameBox
 			// 
-			this->textBox1->Location = System::Drawing::Point(275, 75);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(274, 29);
-			this->textBox1->TabIndex = 0;
+			this->itemNameBox->Location = System::Drawing::Point(275, 75);
+			this->itemNameBox->Name = L"itemNameBox";
+			this->itemNameBox->Size = System::Drawing::Size(274, 29);
+			this->itemNameBox->TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -99,42 +106,42 @@ namespace Project3CLR {
 			this->label3->TabIndex = 3;
 			this->label3->Text = L"Amount";
 			// 
-			// textBox2
+			// quantityBox
 			// 
-			this->textBox2->Location = System::Drawing::Point(275, 137);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(274, 29);
-			this->textBox2->TabIndex = 4;
+			this->quantityBox->Location = System::Drawing::Point(275, 137);
+			this->quantityBox->Name = L"quantityBox";
+			this->quantityBox->Size = System::Drawing::Size(274, 29);
+			this->quantityBox->TabIndex = 4;
 			// 
-			// textBox3
+			// amountBox
 			// 
-			this->textBox3->Location = System::Drawing::Point(275, 202);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(274, 29);
-			this->textBox3->TabIndex = 5;
+			this->amountBox->Location = System::Drawing::Point(275, 202);
+			this->amountBox->Name = L"amountBox";
+			this->amountBox->Size = System::Drawing::Size(274, 29);
+			this->amountBox->TabIndex = 5;
 			// 
-			// button1
+			// submitButton
 			// 
-			this->button1->Location = System::Drawing::Point(427, 275);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(121, 41);
-			this->button1->TabIndex = 6;
-			this->button1->Text = L"Submit";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &NewSalesForm::newSaleButton);
+			this->submitButton->Location = System::Drawing::Point(427, 275);
+			this->submitButton->Name = L"submitButton";
+			this->submitButton->Size = System::Drawing::Size(121, 41);
+			this->submitButton->TabIndex = 6;
+			this->submitButton->Text = L"Submit";
+			this->submitButton->UseVisualStyleBackColor = true;
+			this->submitButton->Click += gcnew System::EventHandler(this, &NewSalesForm::newSaleButton);
 			// 
 			// NewSalesForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(664, 515);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->submitButton);
+			this->Controls->Add(this->amountBox);
+			this->Controls->Add(this->quantityBox);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->itemNameBox);
 			this->Name = L"NewSalesForm";
 			this->Text = L"NewSalesForm";
 			this->ResumeLayout(false);
@@ -143,7 +150,35 @@ namespace Project3CLR {
 		}
 #pragma endregion
 	private: System::Void newSaleButton(System::Object^ sender, System::EventArgs^ e) {
+		String^ quantity = quantityBox->Text;
+		String^ amount = amountBox->Text;
+		String^ itemName = itemNameBox->Text;
+		
+		if (quantity != nullptr && amount != nullptr && itemName != nullptr) {
+			Utils util;
+			String^ dateTime = util.get_current_datetime();
+			String^ unique_sale_id = amount + dateTime;
 
+			MessageBox::Show(unique_sale_id);
+			System::String^ connectionString = "Data Source=AMALLALTL;" +
+				"Initial Catalog=projectclr3;" +
+				"Integrated Security=SSPI;";
+			SqlConnection^ sqlConn = gcnew SqlConnection(connectionString);
+			sqlConn->Open();
+
+			String^ saleInsertQuery = "INSERT INTO [dbo].[sale]([unique_sale_id],[sale_item],[sale_quantity],"+
+				"[sale_amount],[sale_id]) VALUES(@unique_sale_id, @sale_item,"+
+				"@sale_quantity, @sale_amount, @unique_sale_id)";
+
+			SqlCommand^ command = gcnew SqlCommand(saleInsertQuery, sqlConn);
+			command->Parameters->AddWithValue("@unique_sale_id", unique_sale_id);
+			command->Parameters->AddWithValue("@sale_item", itemName);
+			command->Parameters->AddWithValue("@sale_quantity", quantity);
+			command->Parameters->AddWithValue("@sale_amount", amount);
+			command->ExecuteNonQuery();
+			sqlConn->Close();
+			MessageBox::Show("Sale success!");
+		}
 	}
 };
 }

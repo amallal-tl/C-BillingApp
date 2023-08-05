@@ -1,5 +1,7 @@
 #pragma once
 
+#include "NewSalesForm.h"
+
 namespace Project3CLR {
 
 	using namespace System;
@@ -70,36 +72,41 @@ namespace Project3CLR {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(26, 12);
+			this->button1->Location = System::Drawing::Point(32, 14);
+			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(189, 33);
+			this->button1->Size = System::Drawing::Size(231, 40);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"New Sale";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &SaleReport::newSaleClick);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(221, 12);
+			this->button2->Location = System::Drawing::Point(270, 14);
+			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(189, 33);
+			this->button2->Size = System::Drawing::Size(231, 40);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Store";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(416, 12);
+			this->button3->Location = System::Drawing::Point(508, 14);
+			this->button3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(189, 33);
+			this->button3->Size = System::Drawing::Size(231, 40);
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"New Order";
 			this->button3->UseVisualStyleBackColor = true;
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(1643, 22);
+			this->button4->Location = System::Drawing::Point(2008, 26);
+			this->button4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(87, 34);
+			this->button4->Size = System::Drawing::Size(106, 41);
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Refresh";
 			this->button4->UseVisualStyleBackColor = true;
@@ -126,7 +133,8 @@ namespace Project3CLR {
 			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->currentSaleGridView->DefaultCellStyle = dataGridViewCellStyle2;
-			this->currentSaleGridView->Location = System::Drawing::Point(26, 64);
+			this->currentSaleGridView->Location = System::Drawing::Point(32, 77);
+			this->currentSaleGridView->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->currentSaleGridView->Name = L"currentSaleGridView";
 			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
@@ -139,19 +147,20 @@ namespace Project3CLR {
 			this->currentSaleGridView->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->currentSaleGridView->RowHeadersWidth = 62;
 			this->currentSaleGridView->RowTemplate->Height = 28;
-			this->currentSaleGridView->Size = System::Drawing::Size(1714, 553);
+			this->currentSaleGridView->Size = System::Drawing::Size(2095, 664);
 			this->currentSaleGridView->TabIndex = 5;
 			// 
 			// SaleReport
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(11, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1773, 676);
+			this->ClientSize = System::Drawing::Size(2167, 811);
 			this->Controls->Add(this->currentSaleGridView);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"SaleReport";
 			this->Text = L"SaleReport";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->currentSaleGridView))->EndInit();
@@ -184,12 +193,18 @@ namespace Project3CLR {
 			currentSaleGridView->DataSource = bsource;
 			sda->Update(dbdataset);
 
+			sqlConn.Close();
+
 			//SqlDataReader^ read = command.ExecuteReader();
 			
 		}
 		catch (System::Exception^ e) {
 
 		}
+	}
+	private: System::Void newSaleClick(System::Object^ sender, System::EventArgs^ e) {
+		NewSalesForm newSaleForm;
+		newSaleForm.ShowDialog();
 	}
 };
 }
