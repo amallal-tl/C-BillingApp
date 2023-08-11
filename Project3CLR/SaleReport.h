@@ -167,6 +167,7 @@ namespace Project3CLR {
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1707, 638);
+			this->WindowState = FormWindowState::Maximized;
 			this->Controls->Add(this->refershBut2);
 			this->Controls->Add(this->currentSaleGridView);
 			this->Controls->Add(this->button4);
@@ -178,7 +179,6 @@ namespace Project3CLR {
 			this->Text = L"SaleReport";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->currentSaleGridView))->EndInit();
 			this->ResumeLayout(false);
-
 		}
 #pragma endregion
 	private: System::Void newSaleClick(System::Object^ sender, System::EventArgs^ e) {
@@ -194,7 +194,7 @@ namespace Project3CLR {
 			SqlConnection sqlConn(connectionString);
 			sqlConn.Open();
 
-			System::String^ sqlQuery = "SELECT [unique_sale_id],[sale_item],[sale_quantity],[sale_amount],[date]"+
+			System::String^ sqlQuery = "SELECT [unique_sale_id],[sale_item],[sale_quantity],[sale_amount]"+
 				"FROM[dbo].[sale]";
 			SqlCommand command(sqlQuery, % sqlConn);
 
@@ -212,7 +212,7 @@ namespace Project3CLR {
 			sqlConn.Close();
 		}
 		catch (System::Exception^ e) {
-
+			MessageBox::Show("Error occured!");
 		}
 
 	}

@@ -178,6 +178,7 @@ namespace Project3CLR {
 			command->ExecuteNonQuery();
 			sqlConn->Close();
 			MessageBox::Show("Sale success!");
+			this->Close();
 		}
 	}
 };
