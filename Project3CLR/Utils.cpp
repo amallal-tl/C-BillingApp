@@ -1,8 +1,51 @@
 #include "Utils.h"
-#include <msclr\\marshal_cppstd.h> // include this header for conversion
 
 using namespace msclr::interop; // use this namespace for conversion
+using namespace System::Data::SqlClient;
 
+int services_running_status = 0;
+
+void Utils::check_operations() {
+    // This function will run forever in a separate thread
+    while (true) {
+        services_running_status = 0;
+        std::thread dbThread(&Utils::check_Db_Run_Status,this);
+        //dbThread.join();
+    }
+}
+
+bool Utils::getGeneralServicesStatus() {
+    if (services_running_status > global_Status_Count)
+        return true;
+    else false;
+}
+
+// A function to check the database run status
+void Utils::check_Db_Run_Status() {
+        // Declare a constant string variable for the connection string
+        System::String^ connectionString = "Data Source=AMALLALTL;" +
+            "Initial Catalog=projectclr3;" +
+            "Integrated Security=SSPI;";
+
+        // Use a using statement to create and dispose the SqlConnection object
+        SqlConnection sqlConn(connectionString);
+        try {
+            // Open the connection
+            sqlConn.Open();
+            services_running_status += 1;
+            // Print a success message            
+        }
+        catch (System::Exception^ e) {
+            // Print the exception message
+            e;
+            //Console::WriteLine("Exception: {0}", e->Message);
+        }
+        finally {
+            // Close the connection
+            sqlConn.Close();
+            // Print a closing message
+    }
+}
 
 // Default constructor
 Utils::Utils()

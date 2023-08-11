@@ -1,6 +1,7 @@
 #pragma once
 #include "SaleReport.h"
 #include "LoginDB.h"
+#include "Utils.h"
 
 namespace Project3CLR {
 
@@ -80,7 +81,6 @@ namespace Project3CLR {
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
-			this->pictureBox1->Click += gcnew System::EventHandler(this, &LoginForm::pictureBox1_Click);
 			// 
 			// label1
 			// 
@@ -157,6 +157,12 @@ namespace Project3CLR {
 			this->button1->Text = L"Login";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &LoginForm::button1_Click);
+
+			/*
+			Utils util;
+			util.check_operations();
+			*/
+
 			// 
 			// LoginForm
 			// 
@@ -181,9 +187,6 @@ namespace Project3CLR {
 
 		}
 #pragma endregion
-	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		LoginDB logindb;
 		if (logindb.login(textBox1->Text, textBox2->Text)) {
