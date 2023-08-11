@@ -135,6 +135,7 @@ namespace Project3CLR {
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(664, 515);
+			this->WindowState = FormWindowState::Maximized;
 			this->Controls->Add(this->submitButton);
 			this->Controls->Add(this->amountBox);
 			this->Controls->Add(this->quantityBox);
@@ -159,7 +160,6 @@ namespace Project3CLR {
 			String^ dateTime = util.get_current_datetime();
 			String^ unique_sale_id = amount + dateTime;
 
-			MessageBox::Show(unique_sale_id);
 			System::String^ connectionString = "Data Source=AMALLALTL;" +
 				"Initial Catalog=projectclr3;" +
 				"Integrated Security=SSPI;";
@@ -167,8 +167,8 @@ namespace Project3CLR {
 			sqlConn->Open();
 
 			String^ saleInsertQuery = "INSERT INTO [dbo].[sale]([unique_sale_id],[sale_item],[sale_quantity],"+
-				"[sale_amount],[sale_id]) VALUES(@unique_sale_id, @sale_item,"+
-				"@sale_quantity, @sale_amount, @unique_sale_id)";
+				"[sale_amount]) VALUES(@unique_sale_id, @sale_item,"+
+				"@sale_quantity, @sale_amount)";
 
 			SqlCommand^ command = gcnew SqlCommand(saleInsertQuery, sqlConn);
 			command->Parameters->AddWithValue("@unique_sale_id", unique_sale_id);

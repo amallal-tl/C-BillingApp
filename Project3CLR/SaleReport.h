@@ -43,6 +43,7 @@ namespace Project3CLR {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::DataGridView^ currentSaleGridView;
+	private: System::Windows::Forms::Button^ refershBut2;
 
 	protected:
 
@@ -67,13 +68,14 @@ namespace Project3CLR {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->currentSaleGridView = (gcnew System::Windows::Forms::DataGridView());
+			this->refershBut2 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->currentSaleGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
 			this->button1->Location = System::Drawing::Point(32, 14);
-			this->button1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button1->Margin = System::Windows::Forms::Padding(4);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(231, 40);
 			this->button1->TabIndex = 1;
@@ -84,7 +86,7 @@ namespace Project3CLR {
 			// button2
 			// 
 			this->button2->Location = System::Drawing::Point(270, 14);
-			this->button2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button2->Margin = System::Windows::Forms::Padding(4);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(231, 40);
 			this->button2->TabIndex = 2;
@@ -94,7 +96,7 @@ namespace Project3CLR {
 			// button3
 			// 
 			this->button3->Location = System::Drawing::Point(508, 14);
-			this->button3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button3->Margin = System::Windows::Forms::Padding(4);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(231, 40);
 			this->button3->TabIndex = 3;
@@ -104,13 +106,13 @@ namespace Project3CLR {
 			// button4
 			// 
 			this->button4->Location = System::Drawing::Point(2008, 26);
-			this->button4->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button4->Margin = System::Windows::Forms::Padding(4);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(106, 41);
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Refresh";
 			this->button4->UseVisualStyleBackColor = true;
-			this->button4->Click += gcnew System::EventHandler(this, &SaleReport::refershBut);
+			
 			// 
 			// currentSaleGridView
 			// 
@@ -134,7 +136,7 @@ namespace Project3CLR {
 			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->currentSaleGridView->DefaultCellStyle = dataGridViewCellStyle2;
 			this->currentSaleGridView->Location = System::Drawing::Point(32, 77);
-			this->currentSaleGridView->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->currentSaleGridView->Margin = System::Windows::Forms::Padding(4);
 			this->currentSaleGridView->Name = L"currentSaleGridView";
 			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
 			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
@@ -150,17 +152,28 @@ namespace Project3CLR {
 			this->currentSaleGridView->Size = System::Drawing::Size(2095, 664);
 			this->currentSaleGridView->TabIndex = 5;
 			// 
+			// refershBut2
+			// 
+			this->refershBut2->Location = System::Drawing::Point(1695, 12);
+			this->refershBut2->Name = L"refershBut2";
+			this->refershBut2->Size = System::Drawing::Size(178, 40);
+			this->refershBut2->TabIndex = 6;
+			this->refershBut2->Text = L"Refresh";
+			this->refershBut2->UseVisualStyleBackColor = true;
+			this->refershBut2->Click += gcnew System::EventHandler(this, &SaleReport::refreshGrid);
+			// 
 			// SaleReport
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(2167, 811);
+			this->ClientSize = System::Drawing::Size(1924, 811);
+			this->Controls->Add(this->refershBut2);
 			this->Controls->Add(this->currentSaleGridView);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"SaleReport";
 			this->Text = L"SaleReport";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->currentSaleGridView))->EndInit();
@@ -171,40 +184,42 @@ namespace Project3CLR {
 	private: System::Void tableLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
 
-	private: System::Void refershBut(System::Object^ sender, System::EventArgs^ e) {
-		System::String^ connectionString = "Data Source=AMALLALTL;" +
-			"Initial Catalog=projectclr3;" +
-			"Integrated Security=SSPI;";
-		try {
-			SqlConnection sqlConn(connectionString);
-			sqlConn.Open();
-
-			System::String^ sqlQuery = "SELECT [sale_id],[sale_item],[sale_quantity],[sale_amount],[remaining_in_store] FROM[dbo].[sale]";
-			SqlCommand command(sqlQuery, % sqlConn);
-
-			SqlDataAdapter^ sda = gcnew SqlDataAdapter(%command);
-
-			DataTable^ dbdataset = gcnew DataTable();
-			sda->Fill(dbdataset);
-
-			BindingSource^ bsource = gcnew BindingSource();
-			bsource->DataSource = dbdataset;
-
-			currentSaleGridView->DataSource = bsource;
-			sda->Update(dbdataset);
-
-			sqlConn.Close();
-
-			//SqlDataReader^ read = command.ExecuteReader();
-			
-		}
-		catch (System::Exception^ e) {
-
-		}
-	}
 	private: System::Void newSaleClick(System::Object^ sender, System::EventArgs^ e) {
 		NewSalesForm newSaleForm;
 		newSaleForm.ShowDialog();
 	}
+private: System::Void refreshGrid(System::Object^ sender, System::EventArgs^ e) {
+	MessageBox::Show("Refresh Grid");
+	System::String^ connectionString = "Data Source=AMALLALTL;" +
+		"Initial Catalog=projectclr3;" +
+		"Integrated Security=SSPI;";
+	try {
+		SqlConnection sqlConn(connectionString);
+		sqlConn.Open();
+
+		System::String^ sqlQuery = "SELECT [unique_sale_id],[sale_item],[sale_quantity],[sale_amount],[date] FROM[dbo].[sale]";
+		SqlCommand command(sqlQuery, % sqlConn);
+
+		SqlDataAdapter^ sda = gcnew SqlDataAdapter(% command);
+
+		DataTable^ dbdataset = gcnew DataTable();
+		int status = sda->Fill(dbdataset);
+
+		BindingSource^ bsource = gcnew BindingSource();
+		bsource->DataSource = dbdataset;
+
+		currentSaleGridView->DataSource = bsource;
+		sda->Update(dbdataset);
+
+		sqlConn.Close();
+
+		//SqlDataReader^ read = command.ExecuteReader();
+
+	}
+	catch (System::Exception^ e) {
+
+	}
+
+}
 };
 }
