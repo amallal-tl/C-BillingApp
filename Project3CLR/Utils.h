@@ -8,6 +8,7 @@
 #include <thread>
 
 using namespace std;
+using namespace System::Data::SqlClient;
 
 class Utils{
 private:
