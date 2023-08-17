@@ -45,6 +45,7 @@ namespace Project3CLR {
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::DataGridView^ currentSaleGridView;
 	private: System::Windows::Forms::Button^ refershBut2;
+	private: System::Windows::Forms::Button^ sendTodaysReport;
 
 	protected:
 
@@ -70,6 +71,7 @@ namespace Project3CLR {
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->currentSaleGridView = (gcnew System::Windows::Forms::DataGridView());
 			this->refershBut2 = (gcnew System::Windows::Forms::Button());
+			this->sendTodaysReport = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->currentSaleGridView))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -163,11 +165,22 @@ namespace Project3CLR {
 			this->refershBut2->UseVisualStyleBackColor = true;
 			this->refershBut2->Click += gcnew System::EventHandler(this, &SaleReport::refreshGrid);
 			// 
+			// sendTodaysReport
+			// 
+			this->sendTodaysReport->Location = System::Drawing::Point(769, 14);
+			this->sendTodaysReport->Name = L"sendTodaysReport";
+			this->sendTodaysReport->Size = System::Drawing::Size(231, 40);
+			this->sendTodaysReport->TabIndex = 7;
+			this->sendTodaysReport->Text = L"Send Today\'s Report";
+			this->sendTodaysReport->UseVisualStyleBackColor = true;
+			this->sendTodaysReport->Click += gcnew System::EventHandler(this, &SaleReport::sendTodayReport);
+			// 
 			// SaleReport
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1707, 638);
+			this->Controls->Add(this->sendTodaysReport);
 			this->Controls->Add(this->refershBut2);
 			this->Controls->Add(this->currentSaleGridView);
 			this->Controls->Add(this->button4);
@@ -230,6 +243,9 @@ namespace Project3CLR {
 	//Handles the event windowform load
 	private: System::Void formLoad(System::Object^ sender, System::EventArgs^ e) {
 		fillDataGridView();
+	}
+	private: System::Void sendTodayReport(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 };
 }

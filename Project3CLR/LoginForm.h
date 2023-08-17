@@ -24,6 +24,9 @@ namespace Project3CLR {
 			//
 			//TODO: Add the constructor code here
 			//
+			Utils util;
+			util.check_operations();
+
 		}
 
 	protected:
@@ -204,12 +207,11 @@ namespace Project3CLR {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		loginAction();
 	}
+		
 	private: System::Void passwordEnterKeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if(e->KeyCode == Keys::Enter)
 			loginAction();
 	}
 	};
 	
-
-
 }
