@@ -1,6 +1,7 @@
 #pragma once
 
 #include "NewSalesForm.h"
+#include "StoreForm.h"
 
 namespace Project3CLR {
 
@@ -60,9 +61,9 @@ namespace Project3CLR {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button3 = (gcnew System::Windows::Forms::Button());
@@ -116,37 +117,37 @@ namespace Project3CLR {
 			// 
 			// currentSaleGridView
 			// 
-			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->currentSaleGridView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->currentSaleGridView->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
 			this->currentSaleGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->currentSaleGridView->DefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->currentSaleGridView->DefaultCellStyle = dataGridViewCellStyle2;
 			this->currentSaleGridView->Location = System::Drawing::Point(32, 77);
 			this->currentSaleGridView->Margin = System::Windows::Forms::Padding(4);
 			this->currentSaleGridView->Name = L"currentSaleGridView";
-			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->currentSaleGridView->RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->currentSaleGridView->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->currentSaleGridView->RowHeadersWidth = 62;
 			this->currentSaleGridView->RowTemplate->Height = 28;
 			this->currentSaleGridView->Size = System::Drawing::Size(1082, 527);
@@ -167,7 +168,6 @@ namespace Project3CLR {
 			this->AutoScaleDimensions = System::Drawing::SizeF(11, 24);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1707, 638);
-			this->WindowState = FormWindowState::Maximized;
 			this->Controls->Add(this->refershBut2);
 			this->Controls->Add(this->currentSaleGridView);
 			this->Controls->Add(this->button4);
@@ -177,8 +177,10 @@ namespace Project3CLR {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"SaleReport";
 			this->Text = L"SaleReport";
+			this->Load += gcnew System::EventHandler(this, &SaleReport::formLoad);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->currentSaleGridView))->EndInit();
 			this->ResumeLayout(false);
+
 		}
 #pragma endregion
 	private: System::Void newSaleClick(System::Object^ sender, System::EventArgs^ e) {
@@ -186,7 +188,7 @@ namespace Project3CLR {
 		newSaleForm.ShowDialog();
 	}
 
-	private: System::Void refreshGrid(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void fillDataGridView() {
 		System::String^ connectionString = "Data Source=AMALLALTL;" +
 			"Initial Catalog=projectclr3;" +
 			"Integrated Security=SSPI;";
@@ -194,7 +196,7 @@ namespace Project3CLR {
 			SqlConnection sqlConn(connectionString);
 			sqlConn.Open();
 
-			System::String^ sqlQuery = "SELECT [unique_sale_id],[sale_item],[sale_quantity],[sale_amount]"+
+			System::String^ sqlQuery = "SELECT [unique_sale_id],[sale_item],[sale_quantity],[sale_amount]" +
 				"FROM[dbo].[sale]";
 			SqlCommand command(sqlQuery, % sqlConn);
 
@@ -214,10 +216,20 @@ namespace Project3CLR {
 		catch (System::Exception^ e) {
 			MessageBox::Show("Error occured!");
 		}
-
 	}
-	private: System::Void buttonStore(System::Object^ sender, System::EventArgs^ e) {
 
+	private: System::Void refreshGrid(System::Object^ sender, System::EventArgs^ e) {
+		fillDataGridView();
+	}
+
+	private: System::Void buttonStore(System::Object^ sender, System::EventArgs^ e) {
+		StoreForm storeForm;
+		storeForm.ShowDialog();
+	}
+
+	//Handles the event windowform load
+	private: System::Void formLoad(System::Object^ sender, System::EventArgs^ e) {
+		fillDataGridView();
 	}
 };
 }
