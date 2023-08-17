@@ -18,9 +18,11 @@ private:
 public:
     // Default constructor
     Utils();
-
+    
     // Get the current date and time as a string
     System::String^ get_current_datetime() const;    
+    System::String^ getCurrentDate() const;
     void check_operations();
     bool getGeneralServicesStatus();
+    void printLog();
 };

@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="DBInteractions.cpp" />
     <ClCompile Include="HomeForm.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="LoginDB.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="NewSalesForm.cpp" />
@@ -132,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DBInteractions.h" />
+    <ClInclude Include="Logger.h" />
     <ClInclude Include="NewSalesForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

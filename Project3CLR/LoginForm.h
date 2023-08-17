@@ -26,7 +26,6 @@ namespace Project3CLR {
 			//
 			Utils util;
 			util.check_operations();
-
 		}
 
 	protected:

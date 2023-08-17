@@ -7,11 +7,9 @@ int services_running_status = 0;
 
 void Utils::check_operations() {
     // This function will run forever in a separate thread
-    while (true) {
         services_running_status = 0;
         std::thread dbThread(&Utils::check_Db_Run_Status,this);
-        //dbThread.join();
-    }
+        dbThread.detach();
 }
 
 bool Utils::getGeneralServicesStatus() {
@@ -27,30 +25,57 @@ void Utils::check_Db_Run_Status() {
             "Initial Catalog=projectclr3;" +
             "Integrated Security=SSPI;";
 
-        // Use a using statement to create and dispose the SqlConnection object
-        SqlConnection sqlConn(connectionString);
-        try {
-            // Open the connection
-            sqlConn.Open();
-            services_running_status += 1;
-            // Print a success message            
+        while (1) {
+            // Use a using statement to create and dispose the SqlConnection object
+            SqlConnection sqlConn(connectionString);
+            try {
+                // Open the connection
+                sqlConn.Open();
+                services_running_status += 1;
+                // Print a success message            
+            }
+            catch (System::Exception^ e) {
+                // Print the exception message
+                e;
+                //Console::WriteLine("Exception: {0}", e->Message);
+            }
+            finally {
+                // Close the connection
+                sqlConn.Close();
+                // Print a closing message
+            }
         }
-        catch (System::Exception^ e) {
-            // Print the exception message
-            e;
-            //Console::WriteLine("Exception: {0}", e->Message);
-        }
-        finally {
-            // Close the connection
-            sqlConn.Close();
-            // Print a closing message
-    }
 }
 
 // Default constructor
 Utils::Utils()
 {
     // Nothing to do here
+}
+
+System::String^ getCurrentDate() {
+    // Get the current system time point
+    auto now = std::chrono::system_clock::now();
+
+    // Convert it to a time_t object
+    auto now_t = std::chrono::system_clock::to_time_t(now);
+
+    // Convert it to a tm struct
+    auto now_tm = *localtime(&now_t);
+
+    // Create a string stream to format the output
+    std::stringstream ss;
+
+    // Write the date and time in the desired format
+    ss << std::put_time(&now_tm, "%Y%m%d");
+    // Convert the string stream to a std::string
+    std::string str = ss.str();
+
+    // Convert the std::string to a String^ using marshal_as
+    System::String^ result = marshal_as<System::String^>(str);
+
+    // Return the String^ result 
+    return result;
 }
 
 // Get the current date and time as a String^
@@ -76,9 +101,6 @@ System::String^ Utils::get_current_datetime() const
 
     // Convert it to milliseconds
     auto milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(fraction).count();
-
-    // Write the milliseconds with a dot separator
-    //ss << "." << std::setfill('0') << std::setw(3) << milliseconds;
 
     // Convert the string stream to a std::string
     std::string str = ss.str();
