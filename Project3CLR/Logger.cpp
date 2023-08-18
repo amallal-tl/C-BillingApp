@@ -1,28 +1,56 @@
 #include "Logger.h"
 #include "Utils.h"
 
+#using<system.dll>
+
+using namespace System;
+using namespace System::IO;
 
 Logger::Logger() {}
 
-void Logger::printLog(int log_level) {
-	Utils util;
-	
-	System::String^ logfile = "log_"+ util.getCurrentDate();
+int Logger::log_level = 0;
 
-	// Get the current time 
-	time_t now = time (NULL); 
-	// Convert it to a string 
-	char* time_str = ctime (&now); 
-	// Remove the newline character at the end
-	time_str[strlen(time_str) - 1] = "\0";
-	// Create an ofstream object 
-	std::ofstream ofs;
-	// Open the log file in append mode
-	ofs.open (logfile, std::ios::app);
-	// Check if the file is opened successfully if (ofs.is_open ()) { 
-	// Write the timestamp and the message to the file ofs << “[” << time_str << "] " << message << std::endl;
-	// Close the file ofs.close (); } else { 
-	// Print an error message to the standard error stream std::cerr << "Error: could not open " << LOG_FILE << std::endl;
-} 
+void Logger::setLogLevel(int level) {
+	log_level = level;
 }
+
+void Logger::printLog(String^ data, int log_level) {
+	Utils util;	
+	System::String^ fileName = "log_"+ util.getCurrentDate()+".log";
+	System::String^ dirName = "logs";
+	StreamWriter^ sw = nullptr;
+	String^ writeData;
+
+	switch (log_level) {
+		case LOG_ALL:
+			writeData = "LOG_ALL : " + data;
+			break;
+		case LOG_INFO:
+			writeData = "LOG_INFO : " + data;
+			break;
+		case LOG_WARNING:
+			writeData = "LOG_WARNING : " + data;
+			break;
+		case LOG_ERROR:
+			writeData = "LOG_ERROR : " + data;
+			break;
+		case LOG_NONE:
+			return;
+		default:
+			writeData = "LOG_ALL_DEFAULT : " + data;
+			break;
+	}	
+
+	try
+	{
+		System::IO::Directory::CreateDirectory(dirName);
+		System::IO::StreamWriter^ sw = System::IO::File::AppendText(dirName + "\\" + fileName);
+		sw->WriteLine(writeData);
+		sw->Close();
+	}
+	catch (Exception^)
+	{
+		Console::WriteLine("data could not be written");
+		sw->Close();
+	}
 }

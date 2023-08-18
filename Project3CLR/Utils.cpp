@@ -53,29 +53,12 @@ Utils::Utils()
     // Nothing to do here
 }
 
-System::String^ getCurrentDate() {
-    // Get the current system time point
-    auto now = std::chrono::system_clock::now();
-
-    // Convert it to a time_t object
-    auto now_t = std::chrono::system_clock::to_time_t(now);
-
-    // Convert it to a tm struct
-    auto now_tm = *localtime(&now_t);
-
-    // Create a string stream to format the output
-    std::stringstream ss;
-
-    // Write the date and time in the desired format
-    ss << std::put_time(&now_tm, "%Y%m%d");
-    // Convert the string stream to a std::string
-    std::string str = ss.str();
-
-    // Convert the std::string to a String^ using marshal_as
-    System::String^ result = marshal_as<System::String^>(str);
+System::String^ Utils::getCurrentDate() {
+    System::DateTime now = System::DateTime::Now;
+    System::String^ dateStr = now.ToString("yyyy-MM-dd");
 
     // Return the String^ result 
-    return result;
+    return dateStr;
 }
 
 // Get the current date and time as a String^

@@ -2,6 +2,7 @@
 #include "SaleReport.h"
 #include "LoginDB.h"
 #include "Utils.h"
+#include "Logger.h"
 
 namespace Project3CLR {
 
@@ -26,6 +27,9 @@ namespace Project3CLR {
 			//
 			Utils util;
 			util.check_operations();
+			Logger::setLogLevel(LOG_ALL);
+			String^ str = "Application initated";
+			Logger::printLog(str, LOG_INFO);
 		}
 
 	protected:
