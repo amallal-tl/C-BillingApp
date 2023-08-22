@@ -14,14 +14,14 @@ using namespace std;
 
 class Logger {
 private:
-    const int MAX_LOG_LEVEL = 4;
-    static int log_level;
+	const int MAX_LOG_LEVEL = 4;
+	static int log_level;
 
 public:
-    // Default constructor
-    Logger();
+	// Default constructor
+	Logger();
 
-    static void Logger::printLog(System::String^ data, int);
-    static void setLogLevel(int level);
+	static void Logger::printLog(System::String^ data, int);
+	static void setLogLevel(int level);
 };
 

@@ -53,7 +53,7 @@ namespace Project3CLR {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -240,12 +240,12 @@ namespace Project3CLR {
 		storeForm.ShowDialog();
 	}
 
-	//Handles the event windowform load
+		   //Handles the event windowform load
 	private: System::Void formLoad(System::Object^ sender, System::EventArgs^ e) {
 		fillDataGridView();
 	}
 	private: System::Void sendTodayReport(System::Object^ sender, System::EventArgs^ e) {
 
 	}
-};
+	};
 }

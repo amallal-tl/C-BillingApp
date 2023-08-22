@@ -210,11 +210,11 @@ namespace Project3CLR {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		loginAction();
 	}
-		
+
 	private: System::Void passwordEnterKeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		if(e->KeyCode == Keys::Enter)
+		if (e->KeyCode == Keys::Enter)
 			loginAction();
 	}
 	};
-	
+
 }
