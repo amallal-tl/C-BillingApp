@@ -151,6 +151,19 @@ namespace Project3CLR {
 
 		}
 #pragma endregion
+
+	private:System::Void sendSaleReportToServer() {
+
+		HttpSocketManager^ sm = HttpSocketManager::GetInstance();
+		// Connect to the server
+		sm->Connect();
+
+		String^ requestBody = "{\"uniqueSaleId\": \"fadsf\",\"saleItem\" : \"sadfafd\",\"saleQuantity\" : \"dafsdf\,\"saleAmount\" : 12}";
+
+		sm->SendRequest("/newsales", requestBody);
+		sm->ReceiveResponse();
+	}
+		   
 	private: System::Void newSaleButton(System::Object^ sender, System::EventArgs^ e) {
 		String^ quantity = quantityBox->Text;
 		String^ amount = amountBox->Text;
@@ -161,7 +174,6 @@ namespace Project3CLR {
 			String^ dateTime = util.get_current_datetime();
 			String^ unique_sale_id = amount + dateTime;
 
-			
 			System::String^ connectionString = "Data Source=AMALLALTL;" +
 				"Initial Catalog=projectclr3;" +
 				"Integrated Security=SSPI;";

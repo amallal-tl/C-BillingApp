@@ -22,23 +22,11 @@ namespace Project3CLR {
 		LoginForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 			Utils util;
 			util.check_operations();
 			Logger::setLogLevel(LOG_ALL);
 			String^ str = "Application initated";
 			Logger::printLog(str, LOG_INFO);
-
-			HttpSocketManager^ sm = HttpSocketManager::GetInstance();
-			// Connect to the server
-			sm->Connect();
-
-			String^ requestBody = "{\"uniqueSaleId\": \"fadsf\",\"saleItem\" : \"sadfafd\",\"saleQuantity\" : \"dafsdf\,\"saleAmount\" : 12}";
-
-			sm->SendRequest("/newsales", requestBody);
-			sm->ReceiveResponse();
 
 		}
 
