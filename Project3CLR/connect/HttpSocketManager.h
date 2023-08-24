@@ -32,7 +32,7 @@ public:
     void Connect();
 
     // Declare a public method that sends a request to the server
-    void SendRequest(String^ path);
+    void SendRequest(String^ path, String^ requestBody);
 
     // Declare a public method that receives a response from the server
     String^ ReceiveResponse();

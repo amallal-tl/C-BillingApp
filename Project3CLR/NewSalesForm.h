@@ -161,13 +161,7 @@ namespace Project3CLR {
 			String^ dateTime = util.get_current_datetime();
 			String^ unique_sale_id = amount + dateTime;
 
-			HttpSocketManager^ sm = HttpSocketManager::GetInstance();
-			// Connect to the server
-			sm->Connect();
-
-			sm->SendRequest("/newsales");
-			sm->ReceiveResponse();
-
+			
 			System::String^ connectionString = "Data Source=AMALLALTL;" +
 				"Initial Catalog=projectclr3;" +
 				"Integrated Security=SSPI;";

@@ -39,12 +39,44 @@ void HttpSocketManager::Connect()
     Console::WriteLine("Connected to {0}", sock->RemoteEndPoint);
 }
 
-// Define the public method that sends a request to the server
-void HttpSocketManager::SendRequest(String^ path)
+// A helper function that concatenates two byte arrays into one array
+array<Byte>^ Combine(array<Byte>^ arr1, array<Byte>^ arr2)
 {
-    // Create a GET request for the given path
-    String^ request = "POST " + path + " HTTP/1.1\r\nHost: " + host + "\r\nConnection: close\r\n\r\n";
+    // Create a new array with the size equal to the sum of the sizes of the two input arrays
+    int size = arr1->Length + arr2->Length;
+    array<Byte>^ result = gcnew array<Byte>(size);
+
+    // Copy the elements of the first array into the new array starting from index 0
+    for (int i = 0; i < arr1->Length; i++)
+    {
+        result[i] = arr1[i];
+    }
+
+    // Copy the elements of the second array into the new array starting from the index equal to the size of the first array
+    for (int i = 0; i < arr2->Length; i++)
+    {
+        result[arr1->Length + i] = arr2[i];
+    }
+
+    // Return the new array
+    return result;
+}
+
+
+// Define the public method that sends a request to the server
+void HttpSocketManager::SendRequest(String^ path, String^ requestBody)
+{
+    array<Byte>^ jsonBytes = Encoding::ASCII->GetBytes(requestBody);
+
+    //String^ headers = "Content-Type: application/json\r\nContent-Length: " + jsonBytes->Length + "\r\n";
+
+    //String^ request = "POST " + path + " HTTP/1.1\r\nHost: " + host + "\r\nConnection: close\r\n" + headers + "\r\n";
+
+    String^ request = "POST /newsales HTTP/1.1\r\nHost: localhost:8081\r\nContent-Type: application/json\r\nContent-Length: 115\r\n\r\n{ \"uniqueSaleId\":\"fadsf\",\"saleItem\":\"sadfafd\",\"saleQuantity\":\"dafsdf\",\"saleAmount\":12}";
+
     array<Byte>^ requestBytes = Encoding::ASCII->GetBytes(request);
+    requestBytes = Combine(requestBytes, jsonBytes); // Combine is a helper function that concatenates two byte arrays
+
 
     // Send the request
     sock->Send(requestBytes);
@@ -67,7 +99,7 @@ String^ HttpSocketManager::ReceiveResponse()
     }
 
     // Return the response string
-    return response->ToString();
+     return response->ToString();
 }
 
 // Define the public method that closes the connection

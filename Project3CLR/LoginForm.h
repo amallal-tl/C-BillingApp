@@ -30,6 +30,16 @@ namespace Project3CLR {
 			Logger::setLogLevel(LOG_ALL);
 			String^ str = "Application initated";
 			Logger::printLog(str, LOG_INFO);
+
+			HttpSocketManager^ sm = HttpSocketManager::GetInstance();
+			// Connect to the server
+			sm->Connect();
+
+			String^ requestBody = "{\"uniqueSaleId\": \"fadsf\",\"saleItem\" : \"sadfafd\",\"saleQuantity\" : \"dafsdf\,\"saleAmount\" : 12}";
+
+			sm->SendRequest("/newsales", requestBody);
+			sm->ReceiveResponse();
+
 		}
 
 	protected:
