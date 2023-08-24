@@ -240,7 +240,7 @@ namespace Project3CLR {
 		storeForm.ShowDialog();
 	}
 
-		   //Handles the event windowform load
+	//Handles the event windowform load
 	private: System::Void formLoad(System::Object^ sender, System::EventArgs^ e) {
 		fillDataGridView();
 	}

@@ -1,5 +1,6 @@
 #pragma once
 #include "Utils.h"
+#include "connect/HttpSocketManager.h"
 
 namespace Project3CLR {
 
@@ -159,6 +160,13 @@ namespace Project3CLR {
 			Utils util;
 			String^ dateTime = util.get_current_datetime();
 			String^ unique_sale_id = amount + dateTime;
+
+			HttpSocketManager^ sm = HttpSocketManager::GetInstance();
+			// Connect to the server
+			sm->Connect();
+
+			sm->SendRequest("/newsales");
+			sm->ReceiveResponse();
 
 			System::String^ connectionString = "Data Source=AMALLALTL;" +
 				"Initial Catalog=projectclr3;" +

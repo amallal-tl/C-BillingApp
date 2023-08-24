@@ -19,6 +19,12 @@
     <Filter Include="Header Files\DB">
       <UniqueIdentifier>{11793423-f9f6-43a1-84af-ec5647f06a7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\connect">
+      <UniqueIdentifier>{ed9a0095-e671-4ff8-a0d1-123cea2c1dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\connect">
+      <UniqueIdentifier>{f1e564e1-f64d-400d-b177-90ca6ed1d257}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LoginForm.cpp">
@@ -47,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="Logger.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="connect\HttpSocketManager.cpp">
+      <Filter>Source Files\connect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +88,9 @@
     </ClInclude>
     <ClInclude Include="Logger.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="connect\HttpSocketManager.h">
+      <Filter>Header Files\connect</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
