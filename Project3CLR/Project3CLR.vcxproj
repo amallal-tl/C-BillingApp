@@ -132,6 +132,7 @@
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="LoginDB.cpp" />
     <ClCompile Include="LoginForm.cpp" />
+    <ClCompile Include="MainSaleForm1.cpp" />
     <ClCompile Include="NewSalesForm.cpp" />
     <ClCompile Include="SaleReport.cpp" />
     <ClCompile Include="StoreForm.cpp" />
@@ -141,6 +142,9 @@
     <ClInclude Include="connect\HttpSocketManager.h" />
     <ClInclude Include="DBInteractions.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="MainSaleForm1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="NewSalesForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -166,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainSaleForm1.resx">
+      <DependentUpon>MainSaleForm1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewSalesForm.resx">
       <DependentUpon>NewSalesForm.h</DependentUpon>

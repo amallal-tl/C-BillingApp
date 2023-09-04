@@ -3,7 +3,6 @@
 #include "LoginDB.h"
 #include "Utils.h"
 #include "Logger.h"
-#include "HttpConnection.h"
 
 namespace Project3CLR {
 
@@ -28,7 +27,6 @@ namespace Project3CLR {
 			Logger::setLogLevel(LOG_ALL);
 			String^ str = "Application initated";
 			Logger::printLog(str, LOG_INFO);
-			sendHttpRequest();
 
 		}
 

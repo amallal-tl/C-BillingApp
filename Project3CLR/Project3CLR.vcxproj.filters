@@ -57,6 +57,9 @@
     <ClCompile Include="connect\HttpSocketManager.cpp">
       <Filter>Source Files\connect</Filter>
     </ClCompile>
+    <ClCompile Include="MainSaleForm1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginForm.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="connect\HttpSocketManager.h">
       <Filter>Header Files\connect</Filter>
+    </ClInclude>
+    <ClInclude Include="MainSaleForm1.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

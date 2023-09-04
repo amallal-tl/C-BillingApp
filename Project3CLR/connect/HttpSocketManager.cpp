@@ -68,10 +68,6 @@ void HttpSocketManager::SendRequest(String^ path, String^ requestBody)
 {
     array<Byte>^ jsonBytes = Encoding::ASCII->GetBytes(requestBody);
 
-    //String^ headers = "Content-Type: application/json\r\nContent-Length: " + jsonBytes->Length + "\r\n";
-
-    //String^ request = "POST " + path + " HTTP/1.1\r\nHost: " + host + "\r\nConnection: close\r\n" + headers + "\r\n";
-
     String^ request = "POST /newsales HTTP/1.1\r\nHost: localhost:8081\r\nContent-Type: application/json\r\nContent-Length: 115\r\n\r\n{ \"uniqueSaleId\":\"fadsf\",\"saleItem\":\"sadfafd\",\"saleQuantity\":\"dafsdf\",\"saleAmount\":12}";
 
     array<Byte>^ requestBytes = Encoding::ASCII->GetBytes(request);
