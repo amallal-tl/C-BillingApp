@@ -3,6 +3,7 @@
 #include "LoginDB.h"
 #include "Utils.h"
 #include "Logger.h"
+#include "MainSaleForm1.h"
 
 namespace Project3CLR {
 
@@ -197,9 +198,12 @@ namespace Project3CLR {
 		void loginAction() {
 			LoginDB logindb;
 			if (logindb.login(textBox1->Text, textBox2->Text)) {
-				SaleReport saleReport;
+				MainSaleForm mainSaleForm;
 				this->Hide();
-				saleReport.ShowDialog();
+				mainSaleForm.ShowDialog();
+				/*SaleReport saleReport;
+				this->Hide();
+				saleReport.ShowDialog();*/
 			}
 			else MessageBox::Show("Invalid username or password!");
 		}

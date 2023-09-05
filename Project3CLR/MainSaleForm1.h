@@ -1,4 +1,5 @@
 #pragma once
+#include "Global.h"
 #include "connect/HttpSocketManager.h"
 
 namespace Project3CLR {
@@ -101,9 +102,14 @@ namespace Project3CLR {
 		}
 #pragma endregion
 	private: System::Void formLoad(System::Object^ sender, System::EventArgs^ e) {
-		HttpSocketManager^ socket = HttpSocketManager::GetInstance();
-		socket->Connect();
-
+		//String^ body = "{ \"uniqueSaleId\":\"fadsf\",\"saleItem\":\"sadfafd\",\"saleQuantity\":\"dafsdf\",\"saleAmount\":12}";
+		String^ body = "";
+		HttpSocketManager^ httpSocketManager = gcnew HttpSocketManager(HTTPADDRESS, HTTPPORT);
+		httpSocketManager->Connect();
+		httpSocketManager->SendRequest(HTTPGET, "/mainsale", body);
+		String^ response = httpSocketManager->ReceiveResponse();
+		response;
+		httpSocketManager->parseResponse(response);
 	}
 	};
 }

@@ -152,17 +152,6 @@ namespace Project3CLR {
 		}
 #pragma endregion
 
-	private:System::Void sendSaleReportToServer() {
-
-		HttpSocketManager^ sm = HttpSocketManager::GetInstance();
-		// Connect to the server
-		sm->Connect();
-
-		String^ requestBody = "{\"uniqueSaleId\": \"fadsf\",\"saleItem\" : \"sadfafd\",\"saleQuantity\" : \"dafsdf\,\"saleAmount\" : 12}";
-
-		sm->SendRequest("/newsales", requestBody);
-		sm->ReceiveResponse();
-	}
 		   
 	private: System::Void newSaleButton(System::Object^ sender, System::EventArgs^ e) {
 		String^ quantity = quantityBox->Text;
