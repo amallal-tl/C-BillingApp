@@ -107,9 +107,9 @@ namespace Project3CLR {
 		HttpSocketManager^ httpSocketManager = gcnew HttpSocketManager(HTTPADDRESS, HTTPPORT);
 		httpSocketManager->Connect();
 		httpSocketManager->SendRequest(HTTPGET, "/mainsale", body);
-		String^ response = httpSocketManager->ReceiveResponse();
-		response;
+		String^ response = httpSocketManager->ReceiveResponse();		
 		httpSocketManager->parseResponse(response);
+		httpSocketManager->Close();
 	}
 	};
 }

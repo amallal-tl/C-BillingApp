@@ -1,5 +1,6 @@
 // Include the header file
 #include "HttpSocketManager.h"
+#include <rapidjson/document.h>
 
 // Define the static instance of the class as null
 
@@ -65,7 +66,16 @@ String^ HttpSocketManager::ReceiveResponse()
      return response->ToString();
 }
 
+
+
+
 String^ HttpSocketManager::parseResponse(String^ response) {
+    /*array<Char>^ delimiter = { '\r', '\n' };
+    std::string s = "sdf";
+    array<System::String^>^ result = response->Split(delimiter, System::StringSplitOptions::RemoveEmptyEntries);
+    String^ cropped = result[5];
+    System::String^ removed = cropped->Replace("\\", "");
+    return removed;*/
     return "";
 }
 
@@ -76,7 +86,6 @@ void HttpSocketManager::Close()
     sock->Close();
     Console::WriteLine("Closed the connection");
 }
-
 
 // A helper function that concatenates two byte arrays into one array
 array<Byte>^ Combine(array<Byte>^ arr1, array<Byte>^ arr2)
