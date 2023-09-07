@@ -1,6 +1,7 @@
 #pragma once
 #include "Global.h"
 #include "connect/HttpSocketManager.h"
+#include "models/MainSaleModel.h"
 
 namespace Project3CLR {
 
@@ -108,7 +109,10 @@ namespace Project3CLR {
 		httpSocketManager->Connect();
 		httpSocketManager->SendRequest(HTTPGET, "/mainsale", body);
 		String^ response = httpSocketManager->ReceiveResponse();		
-		httpSocketManager->parseResponse(response);
+		String^ jsonResp = httpSocketManager->parseResponse(response);
+		MainSaleModel m;
+		std::vector<MainSaleModel> jsonMainSale = m.jsonToMainSaleModel(response);
+
 		httpSocketManager->Close();
 	}
 	};

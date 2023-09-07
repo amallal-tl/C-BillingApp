@@ -148,6 +148,7 @@
     <ClInclude Include="MainSaleForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="models\MainSaleModel.h" />
     <ClInclude Include="NewSalesForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
